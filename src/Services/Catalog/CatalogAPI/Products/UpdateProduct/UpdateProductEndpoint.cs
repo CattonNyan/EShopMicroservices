@@ -1,5 +1,8 @@
 ﻿namespace CatalogAPI.Products.UpdateProduct;
 
-public class UpdateProductEndpoint
-{
+
+
+internal class UpdateProductEndpoint
+{ 
+
 }
