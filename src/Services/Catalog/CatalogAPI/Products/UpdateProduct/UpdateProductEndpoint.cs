@@ -3,8 +3,6 @@ public record UpdateProductRequest(Guid Id, string Name, List<string> Category, 
 
 public record UpdateProductResponse(bool IsSuccess);
 
-
-
 public class UpdateProductEndpoint : ICarterModule
 { 
     public void AddRoutes(IEndpointRouteBuilder app)
