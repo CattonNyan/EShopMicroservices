@@ -1,12 +1,9 @@
-﻿using static System.Collections.Specialized.BitVector32;
-
 namespace CatalogAPI.Products.UpdateProduct;
 
-public record UpdateProductCommand(Guid id, string Name, List<string> Category, string Description, string ImageFile, decimal Price)
+public record UpdateProductCommand(Guid Id, string Name, List<string> Category, string Description, string ImageFile, decimal Price)
     : ICommand<UpdateProductResult>;
 
 public record UpdateProductResult(bool IsSuccess);
-
 
 internal class UpdateProductCommandHandler(
     IDocumentSession session,
@@ -17,7 +14,7 @@ internal class UpdateProductCommandHandler(
     {
         logger.LogInformation("UpdateProductHandler.Handle called with {@Command}", command);
 
-        var product = await session.LoadAsync<Product>(command.id, cancellationToken);
+        var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
 
         if (product is null)
         {
@@ -34,7 +31,5 @@ internal class UpdateProductCommandHandler(
         await session.SaveChangesAsync(cancellationToken);
 
         return new UpdateProductResult(true);
-
     }
-
 }
